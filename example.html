@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Example usage</h1>
+    <button>Click me</button>
+    <button id="confirm">Confirm</button>
+    <script src="/index.js"></script>
+    <script>
+        document.querySelector("button").addEventListener("click", () => {
+            simpleAlert("success", "Hi!")
+        })
+        document.querySelector("#confirm").addEventListener("click", () => {
+            confirm("Are you sure you want to delete?")
+        })
+    </script>
+</body>
+</html>
