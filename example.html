@@ -8,15 +8,19 @@
 </head>
 <body>
     <h1>Example usage</h1>
-    <button>Click me</button>
+    <button id="simple">Click me</button>
     <button id="confirm">Confirm</button>
     <script src="/index.js"></script>
     <script>
-        document.querySelector("button").addEventListener("click", () => {
-            simpleAlert("success", "Hi!")
+        document.querySelector("#simple").addEventListener("click", () => {
+            simplePop("success", "Hi!")
         })
-        document.querySelector("#confirm").addEventListener("click", () => {
-            confirm("Are you sure you want to delete?")
+        document.querySelector("#confirm").addEventListener("click", async() => {
+            const bool = await confirmPop("Are you sure you want to delete?");
+            if (bool) {
+            simplePop("The user confirmed, 'true' was returned to the function");
+            }
+            else {simplePop("The user cancelled the action, 'false' was returned to the function")}
         })
     </script>
 </body>
