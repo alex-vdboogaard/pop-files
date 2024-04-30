@@ -4,24 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/example.css">
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <h1>Example usage</h1>
-    <button id="simple">Click me</button>
-    <button id="confirm">Confirm</button>
+    <main>
+        <h1>Example usage</h1>
+        <p style="margin-bottom: 50px; font-size: 25px; margin-top: 8px;">Type a typical message you would show to a user.</p>
+        
+        <h2 class="description">Success message</h2>
+        <div class="example-div">
+            <input type="text" id="simplePopTextSuccess">
+            <button id="simpleSuccess" class="example-button">Success message</button>
+        </div>
+        <div class="sandboxPreview" id="sandboxPreview1"></div>
+
+        <h2 class="description">Error message</h2>
+        <div class="example-div">
+            <input type="text" id="simplePopTextError">
+            <button id="simpleError" class="example-button">Error message</button>
+        </div>
+        <div class="sandboxPreview" id="sandboxPreview2"></div>
+
+        <h2 class="description">Confirmation popup</h2>
+        <div class="example-div">
+            <input type="text" id="confirmText">
+            <button id="confirm" class="example-button">Confirm</button>
+        </div>
+        <div class="sandboxPreview" id="sandboxPreview3"></div>        
+
+    </main>
     <script src="/index.js"></script>
     <script>
-        document.querySelector("#simple").addEventListener("click", () => {
-            simplePop("success", "Hi!")
-        })
-        document.querySelector("#confirm").addEventListener("click", async() => {
-            const bool = await confirmPop("Are you sure you want to delete?");
-            if (bool) {
-            simplePop("The user confirmed, 'true' was returned to the function");
+        document.querySelector("#simpleSuccess").addEventListener("click", () => {
+            const successMessage = document.querySelector("#simplePopTextSuccess").value;
+            if (successMessage) {
+                simplePop("success", successMessage);
             }
-            else {simplePop("The user cancelled the action, 'false' was returned to the function")}
+            else simplePop("success", "Welcome to my website!")
         })
+        document.querySelector("#simpleError").addEventListener("click", () => {
+            const errorMessage = document.querySelector("#simplePopTextError").value;
+            if (errorMessage) {
+                simplePop("error", errorMessage);
+            }
+            else simplePop("error", "An error occurred")
+        })
+
+        document.querySelector("#confirm").addEventListener("click", async() => {
+            const confirmMessage = document.querySelector("#confirmText").value;
+            let bool;
+            if (confirmMessage) {
+                bool = await confirmPop(confirmMessage);
+            }
+            else {
+                bool = await confirmPop("Are you sure you want to delete?");
+            }
+            if (bool) {
+                simplePop("success", "The user confirmed, 'true' was returned to the function")
+            }
+            else {
+                simplePop("error", "The user cancelled, 'false' was returned to the function")
+
+            }
+        })
+
+        //live preview:
+        const sandboxPreview1 = document.getElementById("sandboxPreview1");
+        const sandboxPreview2 = document.getElementById("sandboxPreview2");
+        const sandboxPreview3 = document.getElementById("sandboxPreview3");
+
+        const successInput = document.getElementById("simplePopTextSuccess");
+        const errorInput = document.getElementById("simplePopTextError");
+        const confirmInput = document.getElementById("confirmText"); 
+
+        function updatePreview() {
+            const successInput = document.getElementById("simplePopTextSuccess").value;
+            const errorInput = document.getElementById("simplePopTextError").value;
+            const confirmInput = document.getElementById("confirmText").value;          
+
+            sandboxPreview1.innerText = `simplePop("success", "${successInput}")`;
+            sandboxPreview2.innerText = `errorPop("error", "${errorInput}")`;
+            sandboxPreview3.innerText = `const bool = confirmPop("${confirmInput}")`;
+        }
+        
+        successInput.addEventListener("input", updatePreview);
+        errorInput.addEventListener("input", updatePreview);
+        confirmInput.addEventListener("input", updatePreview);
+        updatePreview();
     </script>
 </body>
 </html>
