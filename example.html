@@ -33,6 +33,12 @@
         </div>
         <div class="sandboxPreview" id="sandboxPreview3"></div>        
 
+        <h2 class="description">Input popup</h2>
+        <div class="example-div">
+            <input type="text" id="inputForm">
+            <button id="input" class="example-button">Get input</button>
+        </div>
+        <div class="sandboxPreview" id="sandboxPreview4"></div>     
     </main>
     <script src="/index.js"></script>
     <script>
@@ -50,7 +56,6 @@
             }
             else simplePop("error", "An error occurred")
         })
-
         document.querySelector("#confirm").addEventListener("click", async() => {
             const confirmMessage = document.querySelector("#confirmText").value;
             let bool;
@@ -65,32 +70,52 @@
             }
             else {
                 simplePop("error", "The user cancelled, 'false' was returned to the function")
-
             }
         })
-
+        document.querySelector("#input").addEventListener("click", async() => {
+            const inputMessage = document.querySelector("#inputForm").value;
+            let input;
+            if (inputMessage) {
+                input = await inputPop(inputMessage);
+            }
+            else {
+                input = await inputPop("What's your name?");
+            };
+            if (input) {
+                simplePop("success", `${input} was returned to the variable`)
+            }
+            else {
+                simplePop("error", `${input} was returned to the variable`)
+            }
+            
+        })
         //live preview:
         const sandboxPreview1 = document.getElementById("sandboxPreview1");
         const sandboxPreview2 = document.getElementById("sandboxPreview2");
         const sandboxPreview3 = document.getElementById("sandboxPreview3");
+        const sandboxPreview4 = document.getElementById("sandboxPreview4");
 
         const successInput = document.getElementById("simplePopTextSuccess");
         const errorInput = document.getElementById("simplePopTextError");
         const confirmInput = document.getElementById("confirmText"); 
+        const inputInput = document.getElementById("inputForm"); 
 
         function updatePreview() {
             const successInput = document.getElementById("simplePopTextSuccess").value;
             const errorInput = document.getElementById("simplePopTextError").value;
             const confirmInput = document.getElementById("confirmText").value;          
+            const inputInput = document.getElementById("inputForm").value;          
 
             sandboxPreview1.innerText = `simplePop("success", "${successInput}")`;
-            sandboxPreview2.innerText = `errorPop("error", "${errorInput}")`;
+            sandboxPreview2.innerText = `simplePop("error", "${errorInput}")`;
             sandboxPreview3.innerText = `const bool = confirmPop("${confirmInput}")`;
+            sandboxPreview4.innerText = `const input = inputPop("${inputInput}")`;
         }
         
         successInput.addEventListener("input", updatePreview);
         errorInput.addEventListener("input", updatePreview);
         confirmInput.addEventListener("input", updatePreview);
+        inputInput.addEventListener("input", updatePreview);
         updatePreview();
     </script>
 </body>

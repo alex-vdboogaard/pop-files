@@ -20,8 +20,6 @@ function delayedRemove() {
     }, 3000);
 }
 
-
-
 function simplePop(type, message) {
     closeAllPop();
     const body = document.querySelector("body");
@@ -37,7 +35,6 @@ function simplePop(type, message) {
 
     delayedRemove();
 }
-
 
 async function confirmPop(message) {
     closeAllPop();
@@ -56,6 +53,44 @@ async function confirmPop(message) {
         document.querySelector(".yesButton").addEventListener("click", () => {
             alert.remove();
             resolve(true);
+        });
+    });
+}
+
+async function inputPop(message) {
+    closeAllPop();
+    return new Promise((resolve, reject) => {
+        const body = document.querySelector("body");
+        const alert = document.createElement("div");
+        alert.classList.add("confirm");
+        alert.innerHTML = `<p>${message}</p><input id="inputText" type="text"><div class="buttonGroup"><button class="btn cancelButton">Cancel</button><button class="btn yesButton submitButton">Submit</button></div>`;
+        body.appendChild(alert);
+
+        document.querySelector(".cancelButton").addEventListener("click", () => {
+            alert.remove();
+            resolve(null);
+        });
+
+        document.querySelector(".submitButton").addEventListener("click", () => {
+            const input = document.querySelector("#inputText").value;
+            if (input) {
+                alert.remove();
+                resolve(input);
+            }
+            else {
+                const body = document.querySelector("body");
+                const alert1 = document.createElement("div");
+                alert1.classList.add("top-pop", "pop", "error");
+                alert1.innerHTML = `<p>Please fill in all the fields</p><p class="close" onclick="closePop(this)">x</p>`;
+                body.appendChild(alert1);
+
+                setTimeout(function() {
+                    alert1.style.transition = "top 0.5s ease-out";
+                    alert1.style.top = "10px";
+                }, 100); 
+            
+                delayedRemove();
+            }
         });
     });
 }
