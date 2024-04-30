@@ -22,11 +22,11 @@ function delayedRemove() {
 
 
 
-function simplePop(message) {
+function simplePop(type, message) {
     closeAllPop();
     const body = document.querySelector("body");
     const alert = document.createElement("div");
-    alert.classList.add("top-pop", "pop", "success-div");
+    alert.classList.add("top-pop", "pop", type);
     alert.innerHTML = `<p>${message}</p><p class="close" onclick="closePop(this)">x</p>`;
     body.appendChild(alert);
 
