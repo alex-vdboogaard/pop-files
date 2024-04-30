@@ -5,13 +5,15 @@ A simple script for displaying messages, confirming actions, and getting input f
 Live example: https://alex-vdboogaard.github.io/pop/example.html
 ### Simple popups
 ```JavaScript 
-simplePop("success", "Welcome new user!") //can be closed by the user
+simplePop("success", "Welcome new user!") //success message
+
+simplePop("error", "Something went wrong") //error message
 ```
 ### Confirm actions
 ```JavaScript
-const bool = confirmPop("Are you sure you want to delete this?") //returns true or false
+const bool = await confirmPop("Are you sure you want to delete this?") //returns true or false after Promise resolves
 ```
 ### Get user input
 ```Javascript
-const name = inputPop("What's your name?") //returns user input as string
+const name = await inputPop("What's your name?") //returns user input as string after Promise resolves
 ```
