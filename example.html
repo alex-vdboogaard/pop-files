@@ -108,8 +108,8 @@
 
             sandboxPreview1.innerText = `simplePop("success", "${successInput}")`;
             sandboxPreview2.innerText = `simplePop("error", "${errorInput}")`;
-            sandboxPreview3.innerText = `const bool = confirmPop("${confirmInput}")`;
-            sandboxPreview4.innerText = `const input = inputPop("${inputInput}")`;
+            sandboxPreview3.innerText = `const bool = await confirmPop("${confirmInput}")`;
+            sandboxPreview4.innerText = `const input = await inputPop("${inputInput}")`;
         }
         
         successInput.addEventListener("input", updatePreview);

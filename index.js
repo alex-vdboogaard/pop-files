@@ -42,7 +42,7 @@ async function confirmPop(message) {
         const body = document.querySelector("body");
         const alert = document.createElement("div");
         alert.classList.add("pop","confirm");
-        alert.innerHTML = `<p>${message}</p><div class="buttonGroup"><button class="btn cancelButton">Cancel</button><button class="btn yesButton">Yes</button></div>`;
+        alert.innerHTML = `<p>${message}</p><div class="buttonGroup"><button class="pop-btn cancelButton">Cancel</button><button class="pop-btn yesButton">Yes</button></div>`;
         body.appendChild(alert);
 
         document.querySelector(".cancelButton").addEventListener("click", () => {
@@ -63,7 +63,7 @@ async function inputPop(message) {
         const body = document.querySelector("body");
         const alert = document.createElement("div");
         alert.classList.add("confirm");
-        alert.innerHTML = `<p>${message}</p><input id="inputText" type="text"><div class="buttonGroup"><button class="btn cancelButton">Cancel</button><button class="btn yesButton submitButton">Submit</button></div>`;
+        alert.innerHTML = `<p>${message}</p><input id="inputText" type="text"><div class="buttonGroup"><button class="pop-btn cancelButton">Cancel</button><button class="pop-btn yesButton submitButton">Submit</button></div>`;
         body.appendChild(alert);
 
         document.querySelector(".cancelButton").addEventListener("click", () => {
