@@ -104,5 +104,7 @@
     }
     .pop-confirm {
         justify-content: start;
+        backdrop-filter: blur(100px);
+        background-color: rgba(255, 255, 255, 0.5);
     }
 }
