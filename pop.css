@@ -86,26 +86,23 @@
     color:green;
 }
 
+.pop-svg {
+    width: 20px;
+    height: 20px;
+}
+
 @media (max-width:570px) {
-    .pop-success {
-        max-width: 80%;
+    .pop-top {
+        max-width: 60%;
         width: 100%;
         font-size: 19px;
-    }
-    .pop-error {
-        max-width: 80%;
-        width: 100%;
-        font-size: 19px;
+        justify-content: center;
     }
     .pop-confirm {
         justify-content: start;
         backdrop-filter: blur(100px);
         background-color: rgb(255, 255, 255);
+        padding: 10px;
     }
 }
 
-/* Fancy popups: */
-.pop-svg {
-    width: 20px;
-    height: 20px;
-}
