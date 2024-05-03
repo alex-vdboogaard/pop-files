@@ -3,7 +3,7 @@ A simple script for displaying messages, confirming actions, and getting input f
 ## Use this in your project
 ### CSS file
 ```HTML
-<link href="https://alex-vdboogaard.github.io/pop/pop.js>
+<link rel= "stylesheet" href="https://alex-vdboogaard.github.io/pop/pop.css>">
 ```
 ### JavaScript file
 ```HTML
