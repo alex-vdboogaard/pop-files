@@ -84,6 +84,10 @@ button:hover {
     h2 {
         font-size: 30px;
     }
+    h3 {
+        font-size: 25px;
+        margin-bottom: 5px;
+    }
     input {
         max-width: 100%;
         margin-right: 0px;
