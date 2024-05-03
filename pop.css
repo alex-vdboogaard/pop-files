@@ -112,6 +112,10 @@
         backdrop-filter: blur(100px);
         background-color: rgb(255, 255, 255);
         padding: 10px;
+        font-size: 23px;
+    }
+    .pop-input {
+        margin-bottom: 10px;
     }
 }
 
