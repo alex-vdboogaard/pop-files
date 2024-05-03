@@ -102,3 +102,41 @@ async function inputPop(message) {
         });
     });
 }
+
+async function inputPops(vals) {
+    closeAllPop();
+    return new Promise((resolve, reject) => {
+        const body = document.querySelector("body");
+        const alert = document.createElement("form");
+        alert.classList.add("pop-confirm");
+        vals.forEach(val => {
+            const key = val.keys()[0];
+            const message = val[key];
+            const inputDiv = document.createElement("div");
+            inputDiv.classList.add("inputDiv");
+            inputDiv.innerHTML += `<p>${message}</p><input required class="pop-input" id="${key}" type="text">`;
+        });
+        alert.innerHTML = `<div class="pop-buttonGroup"><button class="pop-btn pop-cancelButton">Cancel</button><button type="submit" class="pop-btn pop-yesButton pop-submitButton">Submit</button></div>`;
+        body.appendChild(alert);
+
+        document.querySelector(".pop-cancelButton").addEventListener("click", () => {
+            alert.remove();
+            resolve(null);
+        });
+
+        alert.addEventListener("submit", function(event) {
+            event.preventDefault();
+            if (this.checkValidity()) {
+                const inputs = document.querySelectorAll("input");
+                const response = [];
+                inputs.forEach(input => {
+                    const val = input.value;
+                    const key = input.id;
+                    response.push({key:val});
+                });
+                alert.remove();
+                resolve(response);
+            }
+        });
+    });
+}
