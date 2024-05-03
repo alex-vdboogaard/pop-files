@@ -82,9 +82,9 @@ async function inputPop(message) {
     closeAllPop();
     return new Promise((resolve, reject) => {
         const body = document.querySelector("body");
-        const alert = document.createElement("div");
+        const alert = document.createElement("form");
         alert.classList.add("pop-confirm");
-        alert.innerHTML = `<p>${message}</p><input class="pop-input" id="inputText" type="text"><div class="pop-buttonGroup"><button class="pop-btn pop-cancelButton">Cancel</button><button class="pop-btn pop-yesButton pop-submitButton">Submit</button></div>`;
+        alert.innerHTML = `<p>${message}</p><input required class="pop-input" id="inputText" type="text"><div class="pop-buttonGroup"><button class="pop-btn pop-cancelButton">Cancel</button><button type="submit" class="pop-btn pop-yesButton pop-submitButton">Submit</button></div>`;
         body.appendChild(alert);
 
         document.querySelector(".pop-cancelButton").addEventListener("click", () => {
@@ -92,25 +92,12 @@ async function inputPop(message) {
             resolve(null);
         });
 
-        document.querySelector(".pop-submitButton").addEventListener("click", () => {
-            const input = document.querySelector("#inputText").value;
-            if (input) {
+        alert.addEventListener("submit", function(event) {
+            event.preventDefault();
+            if (this.checkValidity()) {
+                const input = document.querySelector("#inputText").value;
                 alert.remove();
                 resolve(input);
-            }
-            else {
-                const body = document.querySelector("body");
-                const alert1 = document.createElement("div");
-                alert1.classList.add("top-pop", "pop", "pop-error");
-                alert1.innerHTML = `<p>Please fill in all the fields</p><p class="pop-close" onclick="closePop(this)">x</p>`;
-                body.appendChild(alert1);
-
-                setTimeout(function() {
-                    alert1.style.transition = "top 0.5s ease-out";
-                    alert1.style.top = "10px";
-                }, 100); 
-            
-                delayedRemove();
             }
         });
     });
