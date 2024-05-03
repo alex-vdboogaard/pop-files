@@ -11,33 +11,35 @@
     <main>
         <h1>Example usage</h1>
         <p class="subheading">Type a typical message you would show to a user.</p>
-        <h2>Success message</h2>
+        <h2>Basic popups</h2>
+        <h3>Success message</h3>
         <div class="example-div">
             <input class="example-input" type="text" id="simplePopTextSuccess">
             <button id="simpleSuccess" class="example-button">Success message</button>
         </div>
         <div class="sandboxPreview" id="sandboxPreview1"></div>
 
-        <h2>Error message</h2>
+        <h3>Error message</h3>
         <div class="example-div">
             <input class="example-input" type="text" id="simplePopTextError">
             <button id="simpleError" class="example-button">Error message</button>
         </div>
         <div class="sandboxPreview" id="sandboxPreview2"></div>
 
-        <h2>Confirmation popup</h2>
+        <h3>Confirmation popup</h3>
         <div class="example-div">
             <input class="example-input" type="text" id="confirmText">
             <button id="confirm" class="example-button">Confirm</button>
         </div>
         <div class="sandboxPreview" id="sandboxPreview3"></div>        
 
-        <h2>Input popup</h2>
+        <h3>Input popup</h3>
         <div class="example-div">
             <input class="example-input" type="text" id="inputForm">
             <button id="input" class="example-button">Get input</button>
         </div>
         <div class="sandboxPreview" id="sandboxPreview4"></div>     
+        <h2>Fancy popups</h2>
     </main>
     <script src="https://alex-vdboogaard.github.io/pop/pop.js"></script>
     <script>
@@ -81,10 +83,10 @@
                 input = await inputPop("What's your name?");
             };
             if (input) {
-                simplePop("success", `${input} was returned to the variable`)
+                simplePop("success", `"${input}" was returned to the variable`)
             }
             else {
-                simplePop("error", `${input} was returned to the variable`)
+                simplePop("error", `"${input}" was returned to the variable`)
             }
             
         })
