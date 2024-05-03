@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pop!</title>
-    <link rel="stylesheet" href="https://alex-vdboogaard.github.io/pop/example.css">
-    <link rel="stylesheet" href="https://alex-vdboogaard.github.io/pop/pop.css">
+    <link rel="stylesheet" href="/example.css">
+    <link rel="stylesheet" href="/pop.css">
 </head>
 <body>
     <main>
@@ -47,7 +47,7 @@
         </div>
         <div class="sandboxPreview" id="sandboxPreview5"></div>    
     </main>
-    <script src="https://alex-vdboogaard.github.io/pop/pop.js"></script>
+    <script src="pop.js"></script>
     <script>
         document.querySelector("#simpleSuccess").addEventListener("click", () => {
             const successMessage = document.querySelector("#simplePopTextSuccess").value;
@@ -97,16 +97,23 @@
             
         })
         document.querySelector("#input2").addEventListener("click", async() => {
-            const inputMessage = document.querySelector("#inputForm2").value;
+            let inputMessage = document.querySelector("#inputForm2").value;
             let input;
             if (inputMessage) {
+                inputMessage = JSON.parse(inputMessage);
                 input = await inputPops(inputMessage);
             }
             else {
-                input = await inputPops([{name:"What's your name?"}, {surname:"Surname?"}]);
+                input = await inputPops([{"name":"What's your name?"}, {"surname":"Surname?"}]);
             };
             if (input) {
-                simplePop("success", `"${input}" was returned to the variable`)
+                let res = "[";
+                input.forEach(val => {
+                    res += "{" + Object.keys(val)[0] + " : " + val[Object.keys(val)[0]] + "} ,";
+                });
+                res = res.slice(0,-2);
+                res += "]";
+                simplePop("success", `"${res}" was returned to the variable`)
             }
             else {
                 simplePop("error", `"${input}" was returned to the variable`)
@@ -118,29 +125,35 @@
         const sandboxPreview2 = document.getElementById("sandboxPreview2");
         const sandboxPreview3 = document.getElementById("sandboxPreview3");
         const sandboxPreview4 = document.getElementById("sandboxPreview4");
+        const sandboxPreview5 = document.getElementById("sandboxPreview5");
 
         const successInput = document.getElementById("simplePopTextSuccess");
         const errorInput = document.getElementById("simplePopTextError");
         const confirmInput = document.getElementById("confirmText"); 
-        const inputInput = document.getElementById("inputForm"); 
+        const inputInput = document.getElementById("inputForm1"); 
+        const multipleInput = document.getElementById("inputForm2"); 
 
         function updatePreview() {
             const successInput = document.getElementById("simplePopTextSuccess").value;
             const errorInput = document.getElementById("simplePopTextError").value;
             const confirmInput = document.getElementById("confirmText").value;          
-            const inputInput = document.getElementById("inputForm").value;          
+            const inputInput = document.getElementById("inputForm1").value;          
+            const multipleInput = document.getElementById("inputForm2").value;          
 
             sandboxPreview1.innerText = `simplePop("success", "${successInput}")`;
             sandboxPreview2.innerText = `simplePop("error", "${errorInput}")`;
             sandboxPreview3.innerText = `const bool = await confirmPop("${confirmInput}")`;
             sandboxPreview4.innerText = `const input = await inputPop("${inputInput}")`;
+            sandboxPreview5.innerText = `const multipleInput = await inputPops("${multipleInput}")`;
         }
         
         successInput.addEventListener("input", updatePreview);
         errorInput.addEventListener("input", updatePreview);
         confirmInput.addEventListener("input", updatePreview);
         inputInput.addEventListener("input", updatePreview);
+        multipleInput.addEventListener("input", updatePreview);
         updatePreview();
+        sandboxPreview5.innerText = `const multipleInput = await inputPops("[{name:"What's your name?"}, {surname:"Surname?"}]")`
     </script>
 </body>
 </html>

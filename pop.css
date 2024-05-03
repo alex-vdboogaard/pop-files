@@ -91,6 +91,14 @@
     height: 20px;
 }
 
+.inputPopsText {
+    margin-bottom: 10px;
+}
+
+.inputPopsButtons {
+    margin-top: 30px;
+}
+
 @media (max-width:570px) {
     .pop-top {
         max-width: 60%;
@@ -99,6 +107,8 @@
     }
     .pop-confirm {
         justify-content: start;
+        align-items: center;
+        text-align: center;
         backdrop-filter: blur(100px);
         background-color: rgb(255, 255, 255);
         padding: 10px;
