@@ -101,7 +101,7 @@
 
 @media (max-width:570px) {
     .pop-top {
-        max-width: 60%;
+        max-width: 90%;
         font-size: 19px;
         justify-content: center;
     }
