@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pop!</title>
-    <link rel="stylesheet" href="/node_modules/pop-message/pop.css">
+    <link rel="stylesheet" href="./pop.css">
     <style>
         body {
     display: flex;
@@ -162,7 +162,7 @@ button:hover {
         <div class="sandboxPreview" id="sandboxPreview5"></div>    
     </main>
     <script type="module">
-        import { simplePop, confirmPop, inputPops, inputPop } from "./node_modules/pop-message/index.js";
+        import { simplePop, confirmPop, inputPops, inputPop } from "./index.js";
         document.querySelector("#simpleSuccess").addEventListener("click", () => {
             const successMessage = document.querySelector("#simplePopTextSuccess").value;
             if (successMessage) {

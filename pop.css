@@ -1,0 +1,122 @@
+.pop-top {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: top 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1001;
+    font-size: 21px;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 100%;
+}
+
+.pop-success {
+    background-color: green;
+    padding: 0px 20px;
+    color: white;
+}
+
+.pop-input {
+    padding: 10px 20px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.pop-error {
+    background-color: rgb(186, 12, 0);
+    padding: 0px 20px;
+    color: white;
+}
+
+
+.pop-close {
+    margin-left: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.pop-confirm {
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    z-index: 1000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+.pop-buttonGroup {
+    display: flex;
+    justify-content: center;
+}
+
+.pop-btn {
+    padding: 10px 20px;
+    border: 2px solid black;
+    margin: 5px;
+    font-size: 17px;
+    background-color: white;
+    color: black;
+    transition: all 0.4s;
+    cursor: pointer;
+}
+
+.pop-btn:hover {
+    background-color: white;
+}
+
+.pop-cancelButton:hover {
+    border-color: red;
+    color: red;
+}
+
+.pop-yesButton:hover {
+    border-color: green;
+    color: green;
+}
+
+.pop-svg {
+    width: 20px;
+    height: 20px;
+}
+
+.inputPopsText {
+    margin-bottom: 10px;
+}
+
+.inputPopsButtons {
+    margin-top: 30px;
+}
+
+@media (max-width:570px) {
+    .pop-top {
+        max-width: 90%;
+        font-size: 19px;
+        justify-content: center;
+    }
+
+    .pop-confirm {
+        justify-content: start;
+        align-items: center;
+        text-align: center;
+        backdrop-filter: blur(100px);
+        background-color: rgb(255, 255, 255);
+        padding: 10px;
+        font-size: 23px;
+    }
+
+    .pop-input {
+        margin-bottom: 10px;
+    }
+}
