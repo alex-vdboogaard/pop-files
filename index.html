@@ -4,8 +4,121 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pop!</title>
-    <link rel= "stylesheet" href="https://alex-vdboogaard.github.io/pop/example.css">
-    <link rel= "stylesheet" href="https://alex-vdboogaard.github.io/pop/pop.css">
+    <link rel="stylesheet" href="/node_modules/pop-message/pop.css">
+    <style>
+        body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    height: auto;
+    justify-content: center;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 60px;
+    margin-bottom: 0px;
+}
+
+h2 {
+    font-size: 45px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 35px;
+    font-weight: 500;
+}
+
+.subheading {
+    margin-bottom: 50px;
+    font-size: 25px; 
+    margin-top: 8px;
+}
+
+.example-input {
+    padding: 10px 20px;
+    font-size: 20px;
+    margin-right: 5px;
+    height: 100%;
+}
+
+.example-button {
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: 2px solid;
+    font-size: 19px;
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+button:hover {
+    background-color: #ededed;
+}
+
+.example-div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sandboxPreview {
+    width: 90%;
+    max-width: 600px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border: 1px solid #ccc;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    margin-bottom: 40px;
+    margin-top: 15px;
+    font-size: 20px;
+  }
+
+  @media (max-width: 570px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+    h3 {
+        font-size: 25px;
+        margin-bottom: 5px;
+    }
+    input {
+        max-width: 100%;
+        margin-right: 0px;
+    }
+    .example-div {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .example-button {
+        margin-top: 10px;
+    }
+
+    .subheading {
+        margin-bottom: 20px;
+    }
+
+    .sandboxPreview {
+        max-width: 85%;
+    }
+  }
+    </style>
 </head>
 <body>
     <main>
@@ -48,8 +161,8 @@
         </div>
         <div class="sandboxPreview" id="sandboxPreview5"></div>    
     </main>
-    <script src="https://alex-vdboogaard.github.io/pop/pop.js"></script>
-    <script>
+    <script type="module">
+        import { simplePop, confirmPop, inputPops, inputPop } from "./node_modules/pop-message/index.js";
         document.querySelector("#simpleSuccess").addEventListener("click", () => {
             const successMessage = document.querySelector("#simplePopTextSuccess").value;
             if (successMessage) {
